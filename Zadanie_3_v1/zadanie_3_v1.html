@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Задание 3</title>
+                <link rel="stylesheet" href="styles/style.css" type="text/css">
+
+        <style type="text/css">
+            html, body, #map { <!-- Задаем ширину и высоту листа карты в окне -->
+                margin: 0;
+                width: 98%;
+                height: 97%;
+            }
+			#moveToggle li { 
+                list-style: none;
+            }
+
+        </style>
+        <script src="scripts/OpenLayers.js"></script>
+        <script src="scripts/zadanie_3_draw.js"></script>
+		</head>
+    <body onload="main()"> 
+        <div id="map" class="smallmap"></div>
+         <div id="moving">
+            <ul id="moveToggle">
+                <li>
+                    <input type="checkbox" name="type" value="move" id="moveToggle"
+                           onclick="toggleMove(this);" />
+                    <label for="moveToggle">Активировать перемещение</label>
+                </li>
+            </ul>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Задание 3</title>
+                <link rel="stylesheet" href="styles/style.css" type="text/css">
+
+        <style type="text/css">
+            html, body, #map { <!-- Задаем ширину и высоту листа карты в окне -->
+                margin: 0;
+                width: 95%;
+                height: 90%;
+            }
+			#moveToggle li { 
+                list-style: none;
+            }
+
+        </style>
+        <script src="scripts/OpenLayers.js"></script>
+        <script src="scripts/zadanie_3_draw.js"></script>
+		<script src="scripts/zadanie_3_geojson.js"></script>
+		</head>
+    <body onload="main()"> 
+        <div id="map" class="smallmap"></div>
+         <div id="moving">
+            <ul id="moveToggle">
+                <li>
+                    <input type="checkbox" name="type" value="move" id="moveToggle"
+                           onclick="toggleMove(this);" />
+                    <label for="moveToggle">Активировать перемещение</label>
+                </li>
+            </ul>
+        </div>
+       <div id="input">
+            <label for="formatType">Формат вводимого вектора</label>
+            <select name="formatType" id="formatType">
+                <option value="geojson" selected="selected">GeoJSON</option>
+            </select><br>
+            Проекция ввода: <select id="inproj" onchange='updateFormats()'>
+              <option value="EPSG:4326" selected="selected">EPSG:4326</option>
+              <option value="EPSG:900913">Spherical Mercator</option>
+            </select> <br> 
+            Проекция вывода: <select id="outproj" onchange='updateFormats()'>
+              <option value="EPSG:4326" selected="selected">EPSG:4326</option>
+              <option value="EPSG:900913">Spherical Mercator</option>
+            </select> 
+            <br> 
+            <textarea id="textgeometry">Введите геометрию сюда...</textarea>
+            <br>
+            <input type="button" value="Готово" onclick="deserialize();" />
+        </div>
+    </body>
+</html>
