@@ -1,0 +1,55 @@
+<html>
+<title>Задание 1</title>
+
+<script>
+
+xmlhttp=new XMLHttpRequest();
+xmlhttp.open("GET","legend_example.icxleg",false);
+xmlhttp.send(null);
+xmlDoc=xmlhttp.responseXML;
+
+var x=xmlDoc.getElementsByTagName("ENTRY");
+for (i=0;i<x.length;i++)
+  {
+var r = x[i].getElementsByTagName("Part_Red")[0].childNodes[0].nodeValue;
+var g = x[i].getElementsByTagName("Part_Green")[0].childNodes[0].nodeValue;
+var b = x[i].getElementsByTagName("Part_Blue")[0].childNodes[0].nodeValue;
+var d = x[i].getElementsByTagName("Part_Density")[0].childNodes[0].nodeValue;
+
+ };
+
+function drawImage(imageObj) {
+        var canvas = document.getElementById('mycanvas');
+        var context = canvas.getContext('2d');
+        
+        context.drawImage(imageObj, 0, 0);
+
+        var imageData = context.getImageData(0, 0, imageObj.width, imageObj.height);
+        var data = imageData.data;
+
+        for( i = 0; i < data.length; i +=4) {
+				
+		data[i] = r;
+	//	data[i+1] = g;
+		data[i+2] = b;
+		data[i+3] = d;
+		
+        }
+
+
+        context.putImageData(imageData, 0, 0);
+      }
+      
+      var imageObj = new Image();
+      imageObj.onload = function() {
+        drawImage(this);
+      };
+	  
+imageObj.src = "src_image_example.png";
+
+
+
+</script>
+<canvas id="mycanvas" width="1024", height="768"></canvas>
+
+</html>
